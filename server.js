@@ -102,6 +102,9 @@ const app = express();
 const emailService = new EmailService();
 
 app.use(bodyParser.json());
+app.get('/', (req, res) => {
+    res.send('Welcome to the Email Service API! Use /send-email to send an email.');
+});
 
 // Define a route to handle sending email
 app.post('/send-email', async (req, res) => {
