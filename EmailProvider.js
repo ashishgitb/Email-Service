@@ -3,12 +3,12 @@ class EmailService {
       this.providers = [this.sendViaProvider1, this.sendViaProvider2];
       this.currentProviderIndex = 0;
       this.maxRetries = 3;
-      this.sentEmails = new Set(); // Store sent email IDs to prevent duplicates
-      this.rateLimit = 2; // Maximum emails allowed per time frame
-      this.emailCount = 0; // Email count within the current time frame
-      this.timeFrame = 60000; // 1 minute time frame in milliseconds
-      this.statusLog = {}; // Track email sending statuses
-      this.resetRateLimit(); // Set up rate limit reset
+      this.sentEmails = new Set(); 
+      this.rateLimit = 2; 
+      this.emailCount = 0; 
+      this.timeFrame = 60000; 
+      this.statusLog = {}; 
+      this.resetRateLimit(); 
     }
   
     // Resets the email count at the end of each time frame
@@ -21,13 +21,13 @@ class EmailService {
     // Mock function to simulate sending email via Provider 1
     sendViaProvider1(email) {
       console.log(`Attempting to send email via Provider 1 to ${email.to}`);
-      return Math.random() > 0.5; // Simulate random success/failure
+      return Math.random() > 0.5; 
     }
   
     // Mock function to simulate sending email via Provider 2
     sendViaProvider2(email) {
       console.log(`Attempting to send email via Provider 2 to ${email.to}`);
-      return Math.random() > 0.5; // Simulate random success/failure
+      return Math.random() > 0.5; 
     }
   
     // Main function to send an email with retry logic and fallback mechanism
@@ -44,7 +44,7 @@ class EmailService {
         return false;
       }
   
-      let delay = 1000; // Start with 1 second delay for backoff
+      let delay = 1000; 
       for (let attempt = 0; attempt < retries; attempt++) {
         if (this.sendEmail(email)) {
           console.log('Email sent successfully');
