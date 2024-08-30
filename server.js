@@ -6,33 +6,33 @@ class EmailService {
     constructor() {
         // Array holding references to two mock email-sending functions
         this.providers = [this.sendUsingFirstProvider, this.sendUsingSecondProvider];
-        this.activeProviderIndex = 0; // Index to keep track of the currently active provider
-        this.maxRetryAttempts = 3; // Maximum number of retry attempts for sending an email
-        this.sentEmailIds = new Set(); // A set to track email IDs to avoid resending the same email
-        this.rateLimitThreshold = 2; // Maximum emails allowed within a specific time period
-        this.currentEmailCount = 0; // Counter to track number of emails sent within the current time frame
-        this.timePeriod = 60000; // Time frame in milliseconds (e.g., 1 minute)
-        this.sendStatusLog = {}; // Object to log the status of email sending attempts
-        this.initializeRateLimitReset(); // Method to periodically reset the email counter
+        this.activeProviderIndex = 0; 
+        this.maxRetryAttempts = 3; 
+        this.sentEmailIds = new Set(); 
+        this.rateLimitThreshold = 2; 
+        this.currentEmailCount = 0; 
+        this.timePeriod = 60000; 
+        this.sendStatusLog = {}; 
+        this.initializeRateLimitReset(); 
       }
     
       // Method to reset the email counter after each defined time frame
       initializeRateLimitReset() {
         setInterval(() => {
-          this.currentEmailCount = 0; // Reset the email count
+          this.currentEmailCount = 0; 
         }, this.timePeriod);
       }
     
       // Simulated function to send email using the first mock provider
       sendUsingFirstProvider(email) {
         console.log(`Sending email via First Provider to: ${email.to}`);
-        return Math.random() > 0.5; // Randomly simulate a success or failure
+        return Math.random() > 0.5; 
       }
     
       // Simulated function to send email using the second mock provider
       sendUsingSecondProvider(email) {
         console.log(`Sending email via Second Provider to: ${email.to}`);
-        return Math.random() > 0.5; // Randomly simulate a success or failure
+        return Math.random() > 0.5; 
       }
     
       // Core function to handle email sending with retry logic and provider switching
